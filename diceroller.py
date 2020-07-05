@@ -26,7 +26,25 @@ for field in app_config.value:
         for emoji in field.value.value:
             print(emoji.value)
 
-def download_animations(dice_emoji, dice_name):
+# All currently suported dice emoji with names
+dices = [
+    {
+        "emoji": "🎲",
+        "name": "dice",
+    }, {
+        "emoji": "🎯",
+        "name": "dart",
+    }, {
+        "emoji": "🏀",
+        "name": "ball",
+    },
+]
+
+# Download them all
+for dice in dices:
+    dice_emoji = dice['emoji']
+    dice_name = dice['name']
+
     # How to request sticker documents for a given emoji
     # https://core.telegram.org/api/dice
     print("Downloading animations for a %s emoji %s" % (dice_name, dice_emoji))
@@ -79,24 +97,6 @@ def download_animations(dice_emoji, dice_name):
         # https://docs.pyrogram.org/api/methods/download_media
         app.download_media(message=document)
 
-
-# All currently suported dice emoji with names
-dices = [
-    {
-        "emoji": "🎲",
-        "name": "dice",
-    }, {
-        "emoji": "🎯",
-        "name": "dart",
-    }, {
-        "emoji": "🏀",
-        "name": "ball",
-    },
-]
-
-# Download them all
-for dice in dices:
-    download_animations(dice['emoji'], dice['name'])
 
 # Stopping the Pyrogram client
 app.stop()
