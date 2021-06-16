@@ -37,6 +37,18 @@ dices = [
     }, {
         "emoji": "🏀",
         "name": "ball",
+    }, {
+        "emoji": "⚽️",
+        "name": "soccer",
+    }, {
+        "emoji": "⚽️",
+        "name": "soccer2",
+    }, {
+        "emoji": "🎰",
+        "name": "slots",
+    }, {
+        "emoji": "🎳",
+        "name": "bowling",
     },
 ]
 
