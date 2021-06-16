@@ -18,7 +18,7 @@ app.start()
 # Fetching all supported dice emoji with help.GetAppConfig
 # https://core.telegram.org/api/config#client-configuration
 
-app_config = app.send(pyrogram.api.functions.help.GetAppConfig())
+app_config = app.send(pyrogram.raw.functions.help.GetAppConfig())
 
 print("All supported dice emoji:")
 for field in app_config.value:
@@ -68,11 +68,11 @@ for dice in dices:
 
     # Constructing InputStickerSet with inputStickerSetDice
     # https://core.telegram.org/constructor/inputStickerSetDice
-    input_sticker_set = pyrogram.api.types.InputStickerSetDice(emoticon=dice_emoji)
+    input_sticker_set = pyrogram.raw.types.InputStickerSetDice(emoticon=dice_emoji)
 
     # Constructing TL-method messages.getStickerSet using InputStickerSet
     # https://core.telegram.org/method/messages.getStickerSet
-    get_sticker_set = pyrogram.api.functions.messages.GetStickerSet(stickerset=input_sticker_set)
+    get_sticker_set = pyrogram.raw.functions.messages.GetStickerSet(stickerset=input_sticker_set)
 
     # Calling Telegram API with RawFunction
     # https://docs.pyrogram.org/api/methods/send
@@ -103,7 +103,7 @@ for dice in dices:
 
         # Constructing Pyrogram.Document from TL-schema's Document using private not documented constructor
         # pyrogram/client/types/messages_and_media/document.py
-        document = pyrogram.Document._parse(client=app, document=sticker_set_document, file_name=filename)
+        document = pyrogram.types.Document._parse(client=app, document=sticker_set_document, file_name=filename)
 
         # Downloading Pyrogram.Document with Pyrogram.download_media()
         # https://docs.pyrogram.org/api/methods/download_media
